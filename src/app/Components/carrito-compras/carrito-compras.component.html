@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de compras</title>
+
+    <!-- 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <style>
+        .titulo {
+            background-color: rgb(255 255 255 / 0%);
+            color: white
+        }
+
+        .listado {
+            color: white;
+            overflow-y: scroll;
+            max-width: 90%;
+            /*max-height: 35%;
+            /*min-height: 580px !important;*/
+        }
+
+        .boleta {
+            background: rgb(25 26 32 / 90%);
+            color: white;
+            /*max-height: 250px;*/
+        }
+
+        .fila-1 {
+            background-color: darkgray;
+            color: white;
+
+        }
+
+        .fila-0 {
+            background-color: gainsboro;
+        }
+
+        .cabecera-tabla {
+            background: rgb(25 26 32 / 90%);
+            color: white;
+        }
+
+        body {
+            height: 100%;
+
+            background-image: url(https://img.freepik.com/fotos-premium/resumen-textura-piedra-fondo-pared-ladrillo-blanco-gris-fachada-arquitectura_156843-425.jpg?w=2000);
+        }
+
+        .headers {
+            position: unset !important;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .the {
+            border: 0px;
+        }
+        tr:nth-child(even) /* even = par || odd = impar */
+        {
+            background-color: white;
+        }
+
+        tr:nth-child(odd){
+            background-color: gainsboro;
+        }
+        td{
+        }
+        p{
+            text-align: center; 
+            width: 100%;
+            color: #cdcdcd;
+
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <div class="row titulo">
+            <div class="col-md-12 text-center">
+                <h1><b>
+                    Carrito de Compras
+                </b> </h1>
+            </div>
+
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-9">
+                <div class="row listado">
+
+                    <table class="table text-center" style="margin: 0px;">
+                        <thead class="cabecera-tabla">
+                            <th class="the"></th>
+                            <th class="the">Producto</th>
+                            <th class="the">Precio</th>
+                            <th class="the">Cantidad</th>
+                            <th class="the">Subtotal</th>
+                            <th colspan="2" class="the">Modificar</th>
+
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor="let item of detalleVentas">
+                                <td style="padding: 0px 0px 0px 0px !important;"><img style="max-height: 70px; max-width: 70px;" src="{{item.producto.imagen}}" alt=""></td>
+                                <td>{{item.producto.producto}}</td>
+                                <td>{{item.producto.precio}}</td>
+                                <td *ngIf="conf==true" id="cantidad">{{item.cantidad}}</td>
+                                <td *ngIf="conf==false"><input  [(ngModel)]="item.cantidad" id="cant_edit" class="form-control" type="number" > </td>
+                                <td>{{item.producto.precio*item.cantidad}}</td>
+
+                                <td colspan="0.5">
+                                    <button  (click)="procesar(item)" class="btn btn-success">{{valor}}</button>
+                                </td>
+
+                                <td>
+                                    <button (click)="eliminar(item.idDetalleVenta)" class="btn btn-danger">BORRAR</button>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+            <div class="col-3 boleta">
+                <br>
+                <div class="row">
+                    <h4 style="text-align: center;    width: 100%;"><b>Boleta</b></h4>
+                </div>
+                <div class="row" >
+                    
+                    <p >IGV: {{cabecera.igv}}</p> 
+                    <br>
+                    <p>BRUTO: {{cabecera.bruto}}</p>
+                    <br>
+                    <p>NETO: {{cabecera.neto}}</p>
+                    <br>
+                    <div class="col-12 text-center">
+                        <button (click)="comprar()" style="background: #ffa900; color:white;" class="btn">COMPRAR</button>
+
+                    </div>
+                    
+                </div>
+                <br>
+
+
+            </div>
+
+        </div>
+    </div>
+
+<script>
+
+</script>
+</body>
+</html>
+<!-- <app-footer></app-footer> -->
