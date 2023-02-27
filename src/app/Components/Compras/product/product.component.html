@@ -1,0 +1,19 @@
+<div class="container">
+
+    <div class="container-items">
+    <div class="item" *ngFor=" let deta of productos">
+      <figure>
+        <img
+          src="{{deta.producto.imagen}}"
+          alt="producto"
+        />
+      </figure>
+      <div class="info-product">
+        <h2>{{deta.producto.producto}}</h2>
+        <p class="price">S/{{deta.producto.precio}}.00</p>
+        <button (click)="ObtenerInfo(deta.producto)">Ver Producto</button>
+      </div>
+    </div>
+    
+    </div>
+    </div>

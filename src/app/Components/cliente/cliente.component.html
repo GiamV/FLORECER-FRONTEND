@@ -72,7 +72,7 @@
 
       <div
         class="d-flex flex-column flex-shrink-1 p-5 text-white bg-dark "
-        style="width: 350px; height: 75vh; margin: 0px;"
+        style="width: 350px; height: 77vh; margin: 0px;"
       >
         <a
           href="/"
@@ -128,11 +128,18 @@
             </a>
           </li>
           <li *ngIf="admin && (rol==1)">
+            <a href="#"[routerLink]="['/cliente/cliente-proveedor']" routerLinkActive="active" class="nav-link text-white">
+              <i class="fa-sharp fa-solid fa-money-bill"></i>
+              Proveedores
+            </a>
+          </li>
+          <li *ngIf="admin && (rol==1)">
             <a href="#"[routerLink]="['/cliente/cliente-pedidosadmin']" routerLinkActive="active" class="nav-link text-white">
               <i class="fa-solid fa-box-open"></i>
               Pedidos
             </a>
           </li>
+          
         </ul>
         <hr />
         <!-- <div class="dropdown">

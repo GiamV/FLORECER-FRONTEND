@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule,Routes } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 const routes:Routes =[
   {path:'',redirectTo:'index',pathMatch:'full'},
@@ -35,6 +37,10 @@ const routes:Routes =[
     {path:'cliente-adduser',component:AddUserComponent},
     //TODO USER
     {path:'cliente-pedidosadmin',component:PedidosAdminComponent},
+    //TODO COMPRAS PROVERDOR
+    {path:'cliente-proveedor',component:ProveedoresComponent},
+    {path:'cliente-procom/:id', component:ProductComponent},
+    {path:'cliente-detpro', component:DetProductComponent},
   ]},
   {path:'carrito-compras',component:CarritoComprasComponent},
   {path:'hamburguesas',component:HamburguesaComponent},
@@ -76,6 +82,11 @@ import { PedidosComponent } from './Components/pedidos/pedidos.component';
 import { ListarUserComponent } from './Components/Usuario/listar-user/listar-user.component';
 import { AddUserComponent } from './Components/Usuario/add-user/add-user.component';
 import { PedidosAdminComponent } from './Components/pedidos-admin/pedidos-admin.component';
+import { ProveedoresComponent } from './Components/Compras/proveedores/proveedores.component';
+import { PaginatePipe } from './Pipes/paginate.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductComponent } from './Components/Compras/product/product.component';
+import { DetProductComponent } from './Components/Compras/det-product/det-product.component';
 
 
 
@@ -112,15 +123,20 @@ import { PedidosAdminComponent } from './Components/pedidos-admin/pedidos-admin.
     ListarUserComponent,
     AddUserComponent,
     PedidosAdminComponent,
+    ProveedoresComponent,
+    PaginatePipe,
+    ProductComponent,
+    DetProductComponent,
     
 
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    
+    MatPaginatorModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
