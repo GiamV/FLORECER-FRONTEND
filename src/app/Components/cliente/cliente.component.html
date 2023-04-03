@@ -139,6 +139,12 @@
               Pedidos
             </a>
           </li>
+          <li *ngIf="admin && (rol==1)">
+            <a href="#"[routerLink]="['/cliente/cliente-compras']" routerLinkActive="active" class="nav-link text-white">
+              <i class="fa-solid fa-file-invoice"></i>
+              Orden Compra
+            </a>
+          </li>
           
         </ul>
         <hr />

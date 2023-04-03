@@ -41,8 +41,11 @@ export class ProveedoresComponent implements OnInit {
 
   irProductos(id:number){
     console.log(id);
-    
-    
   }
+
+  irManProvee(){
+    this.router.navigate([`/cliente/cliente-listpro`]);
+  }
+
 
 }

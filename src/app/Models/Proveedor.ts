@@ -6,4 +6,5 @@ export class Proveedor{
     public rup!: string;   
     public telefono!: string;   
     public imagen!: string;   
+    public estado!: number;   
  }

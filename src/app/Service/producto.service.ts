@@ -32,4 +32,7 @@ export class ProductoService {
   deleteProducto(producto:Producto):Observable<any>{
     return this.http.delete<Producto>(this.urlEndPoint+"/productodelete/"+producto.idProducto);
   }
+  deleteProductoEstado(producto:Producto):Observable<any>{
+    return this.http.delete<Producto>(this.urlEndPoint+"/productoestado/"+producto.idProducto);
+  }
 }

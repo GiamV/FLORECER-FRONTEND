@@ -7,6 +7,8 @@ import swal from 'sweetalert2';
 import { LoginService } from 'src/app/Service/login.service';
 import { RolService } from 'src/app/Service/rol.service';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-listar-user',
   templateUrl: './listar-user.component.html',
@@ -16,8 +18,9 @@ export class ListarUserComponent implements OnInit {
 
   roles: Rol[]=[];
   public usuario:Usuario = new Usuario()
+  public usuarioselect:Usuario = new Usuario()
   usuarios:Usuario[]=[];
-  constructor(private loginService:LoginService,private rolService:RolService,
+  constructor(private modal:NgbModal,private loginService:LoginService,private rolService:RolService,
               private carrito:CarritoComprasService) { }
 
   ngOnInit(): void {
@@ -59,6 +62,15 @@ export class ListarUserComponent implements OnInit {
       })
       
       
+    })
+  }
+
+  openCentrado(contenido,user){
+    this.modal.open(contenido,{centered:true, size:'lg'});
+    this.loginService.getUserId(user.idUsuario)
+    .subscribe(data=>{
+      this.usuarioselect=data
+      console.log(this.usuarioselect);
     })
   }
 

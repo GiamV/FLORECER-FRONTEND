@@ -16,8 +16,24 @@ export class ProveedorService {
     return this.http.get<Proveedor[]>(this.urlEndPoint + "/proveedores");
   }
 
+  createProveedores(proveedor:Proveedor){
+    return this.http.post<Proveedor>(this.urlEndPoint + "/ProveedorNew",proveedor )
+  } 
+
   getProveedoresID(idpro: number):Observable<DetalleProveedor[]>{
     return this.http.get<DetalleProveedor[]>(this.urlEndPoint2 + "/detallesProvid/"+idpro);
+  }
+
+  getProveedorId(idProveedor:number){
+    return this.http.get<Proveedor>(this.urlEndPoint+"/proveedores/"+idProveedor);
+  }
+
+  deleteProveedorEstado(proveedor:Proveedor):Observable<any>{
+    return this.http.delete<Proveedor>(this.urlEndPoint+"/proveedorestado/"+proveedor.idProveedor);
+  }
+
+  updateProvee(proveedor:Proveedor){
+    return this.http.put<Proveedor>(this.urlEndPoint+"/ProveedorUpdate/"+proveedor.idProveedor,proveedor);
   }
   
 }

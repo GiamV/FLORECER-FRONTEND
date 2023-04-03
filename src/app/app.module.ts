@@ -4,7 +4,7 @@ import { RouterModule,Routes } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 const routes:Routes =[
   {path:'',redirectTo:'index',pathMatch:'full'},
@@ -41,6 +41,10 @@ const routes:Routes =[
     {path:'cliente-proveedor',component:ProveedoresComponent},
     {path:'cliente-procom/:id', component:ProductComponent},
     {path:'cliente-detpro', component:DetProductComponent},
+    {path:'cliente-listpro', component:ListProveeComponent},
+    {path:'cliente-addpro', component:AddProveeComponent},
+    {path:'cliente-pdf', component:PdfComponent},
+    {path:'cliente-compras', component:ListComprasComponent},
   ]},
   {path:'carrito-compras',component:CarritoComprasComponent},
   {path:'hamburguesas',component:HamburguesaComponent},
@@ -87,6 +91,11 @@ import { PaginatePipe } from './Pipes/paginate.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './Components/Compras/product/product.component';
 import { DetProductComponent } from './Components/Compras/det-product/det-product.component';
+import { ListProveeComponent } from './Components/Compras/list-provee/list-provee.component';
+import { AddProveeComponent } from './Components/Compras/add-provee/add-provee.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PdfComponent } from './Components/Compras/pdf/pdf.component';
+import { ListComprasComponent } from './Components/Compras/list-compras/list-compras.component';
 
 
 
@@ -127,6 +136,10 @@ import { DetProductComponent } from './Components/Compras/det-product/det-produc
     PaginatePipe,
     ProductComponent,
     DetProductComponent,
+    ListProveeComponent,
+    AddProveeComponent,
+    PdfComponent,
+    ListComprasComponent,
     
 
   ],
@@ -134,9 +147,11 @@ import { DetProductComponent } from './Components/Compras/det-product/det-produc
     BrowserModule,
     RouterModule.forRoot(routes),
     MatPaginatorModule,
+    NgxDatatableModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

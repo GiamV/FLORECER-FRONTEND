@@ -9,6 +9,7 @@
 	
   </head>
   <body>
+	<a (click)="irManProvee()"  class="btn btn-primary">Mantenimiento Proveedor</a>
 	<mat-paginator [length]="proveedores.length"
                [pageSize]="page_size"
                [pageSizeOptions]="pageSizeOptions"
@@ -37,7 +38,7 @@
 				<div class="carta-acciones">
 					<a style="text-decoration: none;" [routerLink]="['/cliente/cliente-procom', proveedor.idProveedor]" class="botones agrandar">
 						<span class="fas fa-envelope"></span>
-						Enviar Correo
+						Comprar
 					</a>
 				</div>
 				

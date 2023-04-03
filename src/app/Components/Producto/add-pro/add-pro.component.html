@@ -1,6 +1,6 @@
 <style>
     .bg{
-    background-image:url(../../../../assets/images/producto.png);
+    background-image:url(../../../../assets/images/productoropa.png);
     background-position: center center;
     background-size: cover;
     
@@ -28,6 +28,10 @@
                     <input type="number" class="form-control" name="precio" id="precio" [(ngModel)]="producto.precio">
                 </div>
                 <div class="mb-1">
+                    <label for="" class="form-label fw-bolder">Precio Compra</label><br>
+                    <input type="number" class="form-control" name="precioCompra" id="precioCompra" [(ngModel)]="producto.precioCompra">
+                </div>
+                <div class="mb-1">
                     <label for="" class="form-label fw-bolder">Estado</label><br>
                     <select name="estado"  [(ngModel)]="producto.estado" class="form-control ps-2" aria-label="Default select example">
                         <option [ngValue]="undefined" selected>--Seleccione--</option>
@@ -53,7 +57,7 @@
                 
                 
                 <div class="d-grid  ">
-                    <button (click)="GuardarProducto(producto)" type="submit" class="btn btn-primary fw-bold text-light">Registrar</button>
+                    <button (click)="openCentrado(contenido,producto)"  type="submit" class="btn btn-primary fw-bold text-light">Registrar</button>
                 </div>
                 
                 
@@ -68,3 +72,30 @@
         
     </div>
 </div>
+
+
+<ng-template #contenido let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Registrar Proveedor</h4>
+        <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="mb-1">
+            <label for="" class="form-label fw-bolder">Genero</label><br>
+            <select name="sexo"  [(ngModel)]="detapro.proveedor" class="form-control ps-2" aria-label="Default select example">
+                <option [ngValue]="undefined" selected>--Seleccione--</option>
+                <option *ngFor="let pro of proveedores" [ngValue]="pro">{{pro.nombreComercial}}</option>
+
+            </select>
+        </div>
+    </div>
+    <button type="button" class="btn btn-success" (click)="GuardarDetallePro(detapro)">Guardar</button>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success"(click)="modal.close()" >Cerrar</button>
+    </div>
+</ng-template>
+
+
+

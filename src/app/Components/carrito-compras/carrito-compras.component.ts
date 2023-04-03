@@ -5,6 +5,7 @@ import { CabeceraVenta } from 'src/app/Models/CabeceraVenta';
 //import { DOCUMENT } from '@angular/platform-browser';
 import { DetalleVenta } from 'src/app/Models/DetalleVenta';
 import { CarritoComprasService } from 'src/app/Service/carrito-compras.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-carrito-compras',
@@ -81,7 +82,17 @@ export class CarritoComprasComponent implements OnInit {
     })
     console.log(this.cabecera.idCabecera);
     console.log(this.cabecera);
-    window.location.reload();
+    swal.fire(
+      'Compra Exitosa',
+      'Gracias por su Preferencia',
+      'success'
+    )
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      window.location.reload();
+    }, 1000);
+    
+    
     // this.getCabeceras();
     // this.listarDetalles();
     
