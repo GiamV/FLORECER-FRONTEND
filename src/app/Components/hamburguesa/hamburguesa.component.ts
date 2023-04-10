@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Producto } from 'src/app/Models/Producto';
+import { CargajsService } from 'src/app/Service/cargajs.service';
 import { ProductoService } from 'src/app/Service/producto.service';
+
 
 
 @Component({
@@ -15,9 +17,9 @@ export class HamburguesaComponent implements OnInit {
   id: any;
   cat:String
 
-  constructor(private rutaActiva: ActivatedRoute,private router:Router, private productoService:ProductoService) {
+  constructor(private CargarJS: CargajsService,private rutaActiva: ActivatedRoute,private router:Router, private productoService:ProductoService) {
     this.urlTree = this.router.parseUrl(this.router.url);
-
+    CargarJS.cargar(["js/file"])
     this.id = this.urlTree.queryParams['id'];
    }
 
@@ -26,6 +28,25 @@ export class HamburguesaComponent implements OnInit {
 
 
   ngOnInit(): void {
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     if(this.id==1){
       this.cat="Niños";
     }

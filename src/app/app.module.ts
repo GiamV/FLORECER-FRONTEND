@@ -1,7 +1,7 @@
 import { NgModule,Sanitizer } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule,Routes } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -49,6 +49,11 @@ const routes:Routes =[
   {path:'carrito-compras',component:CarritoComprasComponent},
   {path:'hamburguesas',component:HamburguesaComponent},
   {path:'productodetalle',component:DetalleproComponent},
+  {path:'datos',component:DatosComponent},
+  {path:'envio',component:EnvioComponent},
+  {path:'pagos',component:PagosComponent},
+  {path:'validar',component:ValidarComponent},
+
   
   {path:'**',redirectTo:'index',pathMatch:'full'}
 
@@ -96,6 +101,12 @@ import { AddProveeComponent } from './Components/Compras/add-provee/add-provee.c
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PdfComponent } from './Components/Compras/pdf/pdf.component';
 import { ListComprasComponent } from './Components/Compras/list-compras/list-compras.component';
+import { DatosComponent } from './Components/Pasarela/datos/datos.component';
+import { EnvioComponent } from './Components/Pasarela/envio/envio.component';
+import { PagosComponent } from './Components/Pasarela/pagos/pagos.component';
+import { CargajsService } from './Service/cargajs.service';
+import { InterceptorService } from './Components/Pasarela/interceptor.service';
+import { ValidarComponent } from './Components/Pasarela/validar/validar.component';
 
 
 
@@ -140,6 +151,10 @@ import { ListComprasComponent } from './Components/Compras/list-compras/list-com
     AddProveeComponent,
     PdfComponent,
     ListComprasComponent,
+    DatosComponent,
+    EnvioComponent,
+    PagosComponent,
+    ValidarComponent,
     
 
   ],
@@ -153,7 +168,12 @@ import { ListComprasComponent } from './Components/Compras/list-compras/list-com
     BrowserAnimationsModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    {  
+      provide:HTTP_INTERCEPTORS,
+      useClass:InterceptorService,
+      multi:true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

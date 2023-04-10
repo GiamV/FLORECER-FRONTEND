@@ -16,7 +16,7 @@ export class CarritoComprasComponent implements OnInit {
   
   conf: boolean=true;
   valor: string="EDITAR";
-
+  cont:number=0
 
   cabecera: CabeceraVenta;
 
@@ -42,6 +42,8 @@ export class CarritoComprasComponent implements OnInit {
     this.detalleService.listarDetalles(Number(idUser))
     .subscribe(data=>{
         this.detalleVentas=data;
+        this.cont=this.detalleVentas.length;
+        console.log(this.cont)
       }
     )
   }
@@ -95,7 +97,18 @@ export class CarritoComprasComponent implements OnInit {
     
     // this.getCabeceras();
     // this.listarDetalles();
-    
+  }
+  irPasarela(){
+    if(this.detalleVentas.length==0){
+      swal.fire(
+        'Carrito Vacio',
+        'Asegurece tener productos en su carrito',
+        'info'
+      )
+    }else {
+      localStorage.setItem("monto",String(this.cabecera.neto) );
+    window.location.href="datos";
+    }
     
   }
 

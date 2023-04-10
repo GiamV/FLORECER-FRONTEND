@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vapo Edge Pro 360 - Nike</title>
+</head>
+<body>
+
 <!-- <br>
 <br>
 <br>
@@ -26,20 +37,9 @@
       </div>
     </div>
   </section>
- -->
 
 
-
-  <br>
-<br>
-<br>
-<br>
-
-<br>
-<br>
-<br>
-<br>
-<div class="container">
+  <div class="container">
 
 <div class="container-items">
 <div class="item" *ngFor=" let producto of productos">
@@ -58,7 +58,52 @@
 
 </div>
 </div>
+ -->
+
+
+
+  <br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
 
   
-
-  
+<div class="container">
+  <div class="container-items">
+<div class="card-container" *ngFor=" let producto of productos">
+  <div class="nike-logo-container">
+      <img src="" alt="" class="nike-logo">
+  </div>
+  <div class="product-image-container">
+      <img src="{{producto.imagen}}" style="height: 250px;" alt="" class="product-image">
+  </div>
+  <div class="product-info-container">
+      <span class="subtitle">{{producto.categoria.categoria}}</span>
+      <h2 class="title text-center">{{producto.producto}}</h2>
+      <h4 class="price">S/{{producto.precio}}</h4>
+      <div class="rating-container">
+          <img src="https://github.com/itskrey/KreyAcademy/blob/main/E-Commerce%20Product%20Card/Rating.png?raw=true" alt="" class="star">
+          <img src="https://github.com/itskrey/KreyAcademy/blob/main/E-Commerce%20Product%20Card/Rating.png?raw=true" alt="" class="star">
+          <img src="https://github.com/itskrey/KreyAcademy/blob/main/E-Commerce%20Product%20Card/Rating.png?raw=true" alt="" class="star">
+          <img src="https://github.com/itskrey/KreyAcademy/blob/main/E-Commerce%20Product%20Card/Rating.png?raw=true" alt="" class="star">
+          <img src="https://github.com/itskrey/KreyAcademy/blob/main/E-Commerce%20Product%20Card/Rating.png?raw=true" alt="" class="star">
+      </div>
+      
+      <div class="add-to-cart" (click)="ObtenerInfo(producto)">
+          <div class="add-title-container" (click)="ObtenerInfo(producto)">
+              <img src="Cart.png" alt="" class="cart">
+              <h4 class="add-title" (click)="ObtenerInfo(producto)">Ver</h4>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+</body>
+</html>

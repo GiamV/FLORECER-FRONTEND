@@ -50,7 +50,6 @@
         body {
             
 
-            background-image: url(https://img.freepik.com/fotos-premium/resumen-textura-piedra-fondo-pared-ladrillo-blanco-gris-fachada-arquitectura_156843-425.jpg?w=2000);
         }
 
         .headers {
@@ -100,9 +99,10 @@
         <br><br>
         <div class="row">
             <div class="col-9">
-                <div class="row listado">
-
-                    <table class="table text-center" style="margin: 0px;">
+                <div *ngIf="cont>0" class="row listado" style="display: flex;
+                justify-content: center;
+                align-items: center;">
+                    <table  class="table text-center" style="margin: 0px;">
                         <thead class="cabecera-tabla">
                             <th class="the"></th>
                             <th class="the">Producto</th>
@@ -132,8 +132,44 @@
                             </tr>
                         </tbody>
                     </table>
+                    
+                    </div>
+                
+
+
+
+                <div *ngIf="cont==0" class="row listado" style="display: flex;
+                justify-content: center;
+                align-items: center;">
+                    
+                    
+                    <table  class="table text-center" style="margin: 0px;">
+                        <thead class="cabecera-tabla">
+                            <th class="the"></th>
+                            <th class="the">Producto</th>
+                            <th class="the">Precio</th>
+                            <th class="the">Cantidad</th>
+                            <th class="the">Subtotal</th>
+                            <th colspan="2" class="the">Modificar</th>
+
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="count-products">
+                        <span id="contador-productos">0</span>
+                    </div>
+                    <img  style="height: 350px; width: 350px; max-width: 100%;
+                    max-height: 100%;" src="https://cdn-icons-png.flaticon.com/512/5435/5435052.png">
 
                 </div>
+
+
+
+
+
+
+
 
             </div>
             <div class="col-3 boleta">
@@ -150,7 +186,7 @@
                     <p>NETO: {{cabecera.neto}}</p>
                     <br>
                     <div class="col-12 text-center">
-                        <button (click)="comprar()" style="background: #ffa900; color:white;" class="btn">COMPRAR</button>
+                        <button  (click)="irPasarela()" style="background: #ffa900; color:white;" class="btn">COMPRAR</button>
 
                     </div>
                     

@@ -9,9 +9,18 @@ import { Usuario } from '../Models/Usuario';
 export class LoginService {
 
   private urlEndPoint:string="http://localhost:8080/usuario";
+  private urlEndPoint2:string="http://localhost:8080/correo";
   
   
   constructor(private http:HttpClient) { }
+
+  Carga(){
+    let node = document.createElement("script");
+    node.src="../../assets/js/file.js";
+    node.type="text/javascript";
+    document.getElementsByTagName("head")[0].appendChild(node);
+    
+  }
 
   getUsers():Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.urlEndPoint + "/usuarios");
@@ -59,5 +68,8 @@ export class LoginService {
 
   getToken(){
     return localStorage.getItem("token");
+  }
+  getCorreo(idUser:number,correo:string){
+    return this.http.get<Boolean>(this.urlEndPoint2 + "/enviar/"+idUser +"/"+correo)
   }
 }

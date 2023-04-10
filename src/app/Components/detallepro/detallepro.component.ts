@@ -28,7 +28,9 @@ export class DetalleproComponent implements OnInit {
 
 
   constructor(private router:Router, private productoService:ProductoService, private loginService:LoginService,
-    private location:Location, private carrito:CarritoComprasService) { }
+    private location:Location, private carrito:CarritoComprasService) { 
+      
+    }
 
   ngOnInit(): void {
     this.productoService.getProductos().subscribe(

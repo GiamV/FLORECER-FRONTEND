@@ -48,8 +48,8 @@ export class DetProductComponent implements OnInit {
     console.log(this.guia.idGuiaEntrada);
     console.log(this.guia);
     swal.fire(
-      'Compra Exitosa',
-      'Verifique el Stock',
+      'SISTEMA DE COMPRAS',
+      'Orden Generada Correctamente',
       'success'
     )
     this.router.navigate([`/cliente/cliente-pdf`]);
