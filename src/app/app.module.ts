@@ -45,6 +45,7 @@ const routes:Routes =[
     {path:'cliente-addpro', component:AddProveeComponent},
     {path:'cliente-pdf', component:PdfComponent},
     {path:'cliente-compras', component:ListComprasComponent},
+    {path:'cliente-dashventas',component:VentasComponent},
   ]},
   {path:'carrito-compras',component:CarritoComprasComponent},
   {path:'hamburguesas',component:HamburguesaComponent},
@@ -107,6 +108,8 @@ import { PagosComponent } from './Components/Pasarela/pagos/pagos.component';
 import { CargajsService } from './Service/cargajs.service';
 import { InterceptorService } from './Components/Pasarela/interceptor.service';
 import { ValidarComponent } from './Components/Pasarela/validar/validar.component';
+import { PlantCorreoComponent } from './Components/plant-correo/plant-correo.component';
+import { VentasComponent } from './Components/Dashboard/ventas/ventas.component';
 
 
 
@@ -155,6 +158,8 @@ import { ValidarComponent } from './Components/Pasarela/validar/validar.componen
     EnvioComponent,
     PagosComponent,
     ValidarComponent,
+    PlantCorreoComponent,
+    VentasComponent,
     
 
   ],

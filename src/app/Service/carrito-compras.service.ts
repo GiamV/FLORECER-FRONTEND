@@ -25,6 +25,10 @@ export class CarritoComprasService {
     return this.http.put("http://localhost:8080/detalle/detalleCarrito/"+id,item);
   }
 
+  actualizarTipo(id:number,cab:CabeceraVenta){
+    return this.http.put("http://localhost:8080/cabecera/cabeceratipo/"+id,cab);
+  }
+
   eliminarCarrito(id:number){
     return this.http.delete("http://localhost:8080/detalle/detalleCarritodelete/"+id);
   }
@@ -56,5 +60,21 @@ export class CarritoComprasService {
   listarCabTodos():Observable<CabeceraVenta[]>{
     return this.http.get<CabeceraVenta[]>("http://localhost:8080/cabecera/cabeceratodos");
   }
+  listarCabTodosP():Observable<CabeceraVenta[]>{
+    return this.http.get<CabeceraVenta[]>("http://localhost:8080/cabecera/cabeceratodosp");
+  }
+  listarCabTodosFull():Observable<CabeceraVenta[]>{
+    return this.http.get<CabeceraVenta[]>("http://localhost:8080/cabecera/cabeceratodosfull");
+  }
+
+  consultaVentas():Observable<any[]>{
+    return this.http.get<any[]>("http://localhost:8080/cabecera/consultaventa");
+  }
+  contarVentas():Observable<any[]>{
+    return this.http.get<any[]>("http://localhost:8080/cabecera/contarventa");
+  }
+  
+  
+
 
 }

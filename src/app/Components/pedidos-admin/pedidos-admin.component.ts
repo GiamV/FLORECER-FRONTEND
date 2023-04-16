@@ -16,9 +16,10 @@ export class PedidosAdminComponent implements OnInit {
   cabeceras:CabeceraVenta[]=[];
   detalles:DetalleVenta[]=[];
   constructor(private modal:NgbModal, private carritoService:CarritoComprasService) { }
-
+  isChecked: boolean = false;
+  isChecked2: boolean = false;
   ngOnInit(): void {
-    this.carritoService.listarCabTodos().subscribe(
+    this.carritoService.listarCabTodosFull().subscribe(
       cabeceras=>{
         this.cabeceras=cabeceras;
         console.log(cabeceras);
@@ -45,5 +46,59 @@ export class PedidosAdminComponent implements OnInit {
       }
     );
   }
+  onCheckboxChange() {
+    
+    setTimeout(() => {
+      console.log(this.isChecked );
+    console.log(this.isChecked2 );
+      if (this.isChecked==true && this.isChecked2==true) {
+        this.carritoService.listarCabTodosFull().subscribe(
+          cabeceras=>{
+            this.cabeceras=cabeceras;
+            console.log(cabeceras);
+          }
+        );
+        console.log("1");
+      } else if (this.isChecked==false && this.isChecked2==false) {
+        this.carritoService.listarCabTodosFull().subscribe(
+          cabeceras=>{
+            this.cabeceras=cabeceras;
+            console.log(cabeceras);
+          }
+        );
+        console.log("2");
+      }if (this.isChecked==true && this.isChecked2==false) {
+        this.carritoService.listarCabTodosP().subscribe(
+          cabeceras=>{
+            this.cabeceras=cabeceras;
+            console.log(cabeceras);
+          }
+        );
+        console.log("3");
+      }if (this.isChecked==false && this.isChecked2==true) {
+        this.carritoService.listarCabTodos().subscribe(
+          cabeceras=>{
+            this.cabeceras=cabeceras;
+            console.log(cabeceras);
+          }
+        );
+        console.log("4");
+      }
+    });
+  }
+
+  ActualizarTipo(id:number,cab:CabeceraVenta){
+    this.carritoService.actualizarTipo(id,cab).subscribe(
+      cabecera=>{
+        this.carritoService.listarCabTodosFull().subscribe(
+          cabeceras=>{
+            this.cabeceras=cabeceras;
+            console.log(cabeceras);
+          }
+        );
+      }
+    );
+  }
+  
 
 }

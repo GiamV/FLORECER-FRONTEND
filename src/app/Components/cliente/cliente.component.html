@@ -145,6 +145,12 @@
               Orden Compra
             </a>
           </li>
+          <li *ngIf="admin && (rol==1)">
+            <a href="#"[routerLink]="['/cliente/cliente-dashventas']" routerLinkActive="active" class="nav-link text-white">
+              <i class="fa-solid fa-chart-line" style="color: #ff6600;"></i>
+              DashBoard Ventas
+            </a>
+          </li>
           
         </ul>
         <hr />

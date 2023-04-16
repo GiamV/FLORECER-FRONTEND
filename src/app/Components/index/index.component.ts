@@ -26,8 +26,6 @@ export class IndexComponent implements OnInit {
           }
           else if(p.idProducto==23){
             this.productos.push(p);
-          }else if(p.idProducto==35){
-            this.productos.push(p);
           }
         }
         console.log(this.productos);
