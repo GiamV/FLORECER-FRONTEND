@@ -21,8 +21,8 @@
                 <td *ngIf="categoria.estado==1">Activo</td>
                 <td *ngIf="categoria.estado==0">Inactivo</td>
                 
-                <td><button  (click)="Editar(categoria)"  class="btn btn-success">Editar</button>
-                    <button  (click)="Delete(categoria)" style="margin-left: 10px;" class="btn btn-danger ms-3">Eliminar</button></td>
+                <td><button  (click)="Editar(categoria)"  class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button  (click)="Delete(categoria)" style="margin-left: 10px;" class="btn btn-danger ms-3"><i class="fa-solid fa-trash"></i></button></td>
             </tr>
           </tbody>
       </table>

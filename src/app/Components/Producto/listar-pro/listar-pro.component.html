@@ -48,9 +48,9 @@
         <li *ngIf="sel.estado==0">
           <b >Estado:</b> Inactivo
         </li>
-        <td><button  (click)="Editar(sel)" class="btn btn-success ">Editar</button>
-          <button *ngIf="sel.estado==0" (click)="Delete(sel)"  class="btn btn-warning" style="margin-left: 10px;">Activar</button>
-                    <button *ngIf="sel.estado==1" (click)="Delete(sel)"  class="btn btn-danger" style="margin-left: 10px;">Desactivar</button></td>
+        <td><button  (click)="Editar(sel)" class="btn btn-success "><i class="fa-solid fa-pen-to-square"></i></button>
+          <button *ngIf="sel.estado==0" (click)="Delete(sel)"  class="btn btn-warning" style="margin-left: 10px;">Activar <i class="fa-solid fa-toggle-on"></i></button>
+                    <button *ngIf="sel.estado==1" (click)="Delete(sel)"  class="btn btn-danger" style="margin-left: 10px;">Desactivar <i class="fa-solid fa-toggle-off"></i></button></td>
         
         <li *ngIf="!productoss.length">No Selections</li>
       </ul>
