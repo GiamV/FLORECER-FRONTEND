@@ -53,13 +53,24 @@ export class CarritoComprasComponent implements OnInit {
       this.conf=false;
       this.valor="GUARDAR"
     }else{
-      this.conf=true;
+      if(item.cantidad< 0){
+        swal.fire(
+          'Cantidad debe ser mayor a 0',
+          'Asegurece de elegir la cantidad correcta',
+          'info'
+        )
+      }else if(item.cantidad==0){
+        this.eliminar(item.idDetalleVenta)
+      }else{
+        this.conf=true;
       this.detalleService.actualizarCant(item.idDetalleVenta,item).subscribe(data=>{
         //this.detalleVentas=this.detalleVentas.filter(r=>r.idDetalleVenta!==item.idDetalleVenta);
         this.listarDetalles();
         this.getCabeceras();
         this.valor="EDITAR"
       })
+      }
+      
     }
     
   }
@@ -100,11 +111,7 @@ export class CarritoComprasComponent implements OnInit {
   }
   irPasarela(){
     if(this.detalleVentas.length==0){
-      swal.fire(
-        'Carrito Vacio',
-        'Asegurece tener productos en su carrito',
-        'info'
-      )
+      
     }else {
       localStorage.setItem("monto",String(this.cabecera.neto) );
     window.location.href="datos";

@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
+
+
+
 const routes:Routes =[
   {path:'',redirectTo:'index',pathMatch:'full'},
   {path:'index',component:IndexComponent},
@@ -48,7 +51,7 @@ const routes:Routes =[
     {path:'cliente-dashventas',component:VentasComponent},
   ]},
   {path:'carrito-compras',component:CarritoComprasComponent},
-  {path:'hamburguesas',component:HamburguesaComponent},
+  {path:'productcatalog',component:ProductListComponent},
   {path:'productodetalle',component:DetalleproComponent},
   {path:'datos',component:DatosComponent},
   {path:'envio',component:EnvioComponent},
@@ -71,7 +74,7 @@ import { MenuAdminComponent } from './Components/menu-admin/menu-admin.component
 import { CanActivateGuard } from './Service/can-activate.guard';
 import { CarritoComprasComponent } from './Components/carrito-compras/carrito-compras.component';
 
-import { HamburguesaComponent } from './Components/hamburguesa/hamburguesa.component';
+import { ProductListComponent } from './Components/productList/app-productList.component';
 import { DetalleproComponent } from './Components/detallepro/detallepro.component';
 
 import { FooterComponent } from './Components/footer/footer.component';
@@ -115,8 +118,10 @@ import { VentasComponent } from './Components/Dashboard/ventas/ventas.component'
 
 
 
+
 @NgModule({
   declarations: [
+
     AppComponent,
     NavbarComponent,
     TopbarComponent,
@@ -126,7 +131,7 @@ import { VentasComponent } from './Components/Dashboard/ventas/ventas.component'
     ValidacionComponent,
     MenuAdminComponent,
     CarritoComprasComponent,
-    HamburguesaComponent,
+    ProductListComponent,
     DetalleproComponent,
     FooterComponent,
     ClienteInicioComponent,

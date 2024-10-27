@@ -24,7 +24,7 @@ export class ValidarComponent implements OnInit {
     var direccion = localStorage.getItem('direc');
     this.direc= JSON.parse(direccion);
     this.getCabeceras();
-    this.JavaService.enviarCorreoElectronico(3,"giam24villa@gmail.com",this.direc.direccion,this.direc.distrito,this.direc.nrodom,this.direc.ref).subscribe(data=>{
+    this.JavaService.enviarCorreoElectronico(Number(idUser),correo,this.direc.direccion,this.direc.distrito,this.direc.nrodom,this.direc.ref).subscribe(data=>{
       console.log("enviado")
       setTimeout(()=>(
         this.comprar(),

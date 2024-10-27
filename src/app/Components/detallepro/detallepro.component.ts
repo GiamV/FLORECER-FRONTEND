@@ -74,68 +74,59 @@ export class DetalleproComponent implements OnInit {
     })
   }
 
-  AgregarAlCarrito(detalle:DetalleVenta){
-    if(this.loginService.isLoggedIn()){
-      console.log("Primera Validacion")
-      if(this.detalle.cantidad==undefined){
-            this.mensaje="Seleccione una cantidad"
-            console.log("Segunda Validacion")
-          }else{
-            this.mensaje=""
-            this.carrito.listarDetalles(this.cabecera.usuario.idUsuario).subscribe(data=>{
-              let encontro=0;
-              for(let de of data){
-                console.log(de);
-                  if(de.producto.idProducto==this.producto.idProducto){
-                    encontro=1;
-                    console.log("Encontro Producto Igual")
-                    de.cantidad= this.detalle.cantidad+de.cantidad;
-                    console.log(de.cantidad);
-                    this.carrito.actualizarCant(de.idDetalleVenta,de).subscribe(detalleup=>{
-                    console.log("Detalle up")
-                    this.mensaje="Se agregó con éxito"
-                    })
-                    console.log("Rompe");
-                    break;
-                  }
-              }
-              
-              if(encontro==0){
-                    this.detalle.cabecera=this.cabecera;
-                    this.detalle.producto=this.producto;
-                    this.detalle.precio=this.producto.precio;
-                    this.detalle.estado=1;
-                    this.carrito.createDetalle(detalle)
-                      .subscribe(data=>{
-                        this.carrito.actualizarCant(data.idDetalleVenta,data).subscribe(detalleup=>{
-                          console.log("Creado con Exito")
-                          this.mensaje="Se agregó con éxito"
-                          })
-                      // alert("Se Agrego Con exito");
-                      this.mensaje="Se agregó con éxito"
-                      })
-              }
-              })
-
+  AgregarAlCarrito(detalle: DetalleVenta) {
+    if (this.loginService.isLoggedIn()) {
+      console.log("Primera Validación");
+  
+      // Verificar si la cantidad está indefinida o es menor o igual a 0
+      if (this.detalle.cantidad === undefined || this.detalle.cantidad <= 0) {
+        this.mensaje = "Seleccione una cantidad mayor a 0";
+        console.log("Segunda Validación: Cantidad inválida");
+      } else {
+        this.mensaje = "";
+        this.carrito.listarDetalles(this.cabecera.usuario.idUsuario).subscribe(data => {
+          let encontro = 0;
+  
+          for (let de of data) {
+            console.log(de);
+            if (de.producto.idProducto == this.producto.idProducto) {
+              encontro = 1;
+              console.log("Encontró Producto Igual");
+              de.cantidad = this.detalle.cantidad + de.cantidad;
+              console.log(de.cantidad);
+              this.carrito.actualizarCant(de.idDetalleVenta, de).subscribe(detalleup => {
+                console.log("Detalle actualizado");
+                this.mensaje = "Se agregó con éxito";
+              });
+              console.log("Rompe");
+              break;
+            }
           }
-      
-    }else{
+  
+          if (encontro == 0) {
+            this.detalle.cabecera = this.cabecera;
+            this.detalle.producto = this.producto;
+            this.detalle.precio = this.producto.precio;
+            this.detalle.estado = 1;
+  
+            this.carrito.createDetalle(detalle).subscribe(data => {
+              this.carrito.actualizarCant(data.idDetalleVenta, data).subscribe(detalleup => {
+                console.log("Creado con éxito");
+                this.mensaje = "Se agregó con éxito";
+              });
+            });
+          }
+        });
+      }
+    } else {
       swal.fire({
         icon: 'info',
         title: 'Ups...',
-        text: 'Logueate o Resgistrate para Comenzar',
-      })
-      this.router.navigate(["/login"])
-      console.log("Ingresa o Registrate")
+        text: 'Inicia sesión o regístrate para comenzar',
+      });
+      this.router.navigate(["/login"]);
+      console.log("Ingresa o regístrate");
     }
-
-    
-    
-
-
-        
-    
-    
   }
   
 

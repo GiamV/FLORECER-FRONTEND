@@ -39,6 +39,7 @@ export class ListarUserComponent implements OnInit {
   }
 
   Registrar(user:Usuario){
+    user.estado=1;
 
     this.loginService.createUser(user)
     .subscribe(data=>{

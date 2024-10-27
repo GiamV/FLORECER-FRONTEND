@@ -45,9 +45,9 @@
                 </div>
                 <div class="mb-1">
                     <label for="" class="form-label fw-bolder">Categoria</label><br>
-                    <select name="apoderado"  [(ngModel)]="producto.categoria" class="form-control ps-2" aria-label="Default select example">
-                        <option [ngValue]="undefined" selected>--Seleccione--</option>
-                        <option *ngFor="let categoria of categorias"  [ngValue]="categoria">{{categoria.categoria}}</option>
+                    <select name="producto.categoria"  [(ngModel)]="producto.categoria" class="form-control ps-2" aria-label="Default select example">
+                        <option [ngValue]="undefined" selected >--Seleccione--</option>
+                        <option *ngFor="let categoria of categorias" [ngValue]="categoria"  [selected]="categoria.categoria"> {{categoria.categoria}} </option>
                     </select>
                 </div>
                 <div class="mb-1">
@@ -57,7 +57,7 @@
                 
                 
                 <div class="d-grid  ">
-                    <button (click)="ActualizarProducto(producto)" type="submit" class="btn btn-primary fw-bold text-light">Registrar</button>
+                    <button (click)="ActualizarProducto(producto)" type="submit" class="btn btn-primary fw-bold text-light">Actualizar</button>
                 </div>
                 
                 

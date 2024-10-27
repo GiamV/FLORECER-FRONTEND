@@ -8,11 +8,11 @@ import { ProductoService } from 'src/app/Service/producto.service';
 
 
 @Component({
-  selector: 'app-hamburguesa',
-  templateUrl: './hamburguesa.component.html',
-  styleUrls: ['./hamburguesa.component.css']
+  selector: 'app-productList',
+  templateUrl: './app-productList.component.html',
+  styleUrls: ['./app-productList.component.css']
 })
-export class HamburguesaComponent implements OnInit {
+export class ProductListComponent implements OnInit {
   urlTree: any;
   id: any;
   cat:String

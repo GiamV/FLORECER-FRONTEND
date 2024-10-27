@@ -37,17 +37,32 @@ export class ListarProComponent implements OnInit {
       }
     );
   }
-  Delete(producto:Producto){
-    this.productoService.deleteProductoEstado(producto)
-    .subscribe(data=>{
-      this.productoService.getProductos().subscribe(
-        productos=>{
-          this.productos=productos;
-          console.log(productos);
+
+  Delete(producto: Producto) {
+    // Guardar el producto seleccionado antes de realizar la actualización
+    const selectedProducto = this.productoss[0]; // Si solo seleccionas un producto a la vez
+  
+    this.productoService.deleteProductoEstado(producto).subscribe(data => {
+      // Buscar el producto en el array y actualizar su estado
+      const index = this.productos.findIndex(p => p.idProducto === producto.idProducto);
+      if (index !== -1) {
+        this.productos[index].estado = producto.estado === 1 ? 0 : 1;
+      }
+  
+      // Actualizar la lista de productos si es necesario
+      this.productoService.getProductos().subscribe(productos => {
+        this.productos = productos;
+  
+        // Volver a seleccionar el producto que estaba previamente seleccionado
+        const selectedIndex = this.productos.findIndex(p => p.idProducto === selectedProducto.idProducto);
+        if (selectedIndex !== -1) {
+          this.productoss = [this.productos[selectedIndex]]; // Reasigna la selección
         }
-      );
-    })
+      });
+    });
   }
+  
+
   Editar(producto:Producto):void{
     localStorage.setItem("idProducto",producto.idProducto.toString());
     this.router.navigate(["cliente/cliente-editproducto"]);

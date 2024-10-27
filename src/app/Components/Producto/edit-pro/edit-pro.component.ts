@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Categoria } from 'src/app/Models/Categoria';
 import { Producto } from 'src/app/Models/Producto';
 import { CategoriaService } from 'src/app/Service/categoria.service';
 import { ProductoService } from 'src/app/Service/producto.service';
+
+
 
 @Component({
   selector: 'app-edit-pro',
@@ -13,16 +15,17 @@ import { ProductoService } from 'src/app/Service/producto.service';
 export class EditProComponent implements OnInit {
 
   public producto:Producto = new Producto()
-  constructor(private router:Router, private productoService:ProductoService,private categoriaService:CategoriaService ) { }
+  constructor(private router:Router, private productoService:ProductoService,private categoriaService:CategoriaService,) { }
   categorias: Categoria[]=[];
   ngOnInit(): void {
     
     this.categoriaService.getCategorias().subscribe(
       categorias=>{
       this.categorias=categorias;
+      this.Editar();
       }
     );
-    this.Editar();
+    
   }
 
   Editar(){
@@ -30,10 +33,14 @@ export class EditProComponent implements OnInit {
     this.productoService.getProductoId(+idProducto!)
     .subscribe(data=>{
       this.producto=data;
+      this.producto.categoria = this.categorias.find(cat => cat.idCategoria === this.producto.categoria.idCategoria);
+      console.log(data.categoria.categoria)
     })
   }
   
   ActualizarProducto(producto:Producto){
+    console.log('entro')
+    console.log(producto)
     this.productoService.updateProducto(producto)
     .subscribe(data=>{
       this.producto=data;
