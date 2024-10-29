@@ -135,7 +135,7 @@
 
     <div class="container-items">
       <!-- Producto 1 -->
-      <div class="card-product" *ngFor="let producto of productos">
+      <div (click)="ObtenerInfo(producto)" class="card-product" *ngFor="let producto of productos">
                     <div class="container-img">
                         <figure>
                             <img src="{{producto.imagen}}" alt="producto" />
@@ -152,7 +152,8 @@
                         </div>
                         <h2>{{producto.producto}}</h2>
                         <span class="add-cart">
-                            <i class="fa-solid fa-basket-shopping"></i>
+                          <a (click)="ObtenerInfo(producto)"><i class="fa-solid fa-basket-shopping"></i></a>
+                            
                         </span>
                         <p class="price">S/{{producto.precio}}</p>
                     </div>

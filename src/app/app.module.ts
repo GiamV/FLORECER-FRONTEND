@@ -15,7 +15,12 @@ const routes:Routes =[
   {path:'login',component:LoginComponent},
   {path:'validation',component:ValidacionComponent},
   {path:'menuadmin',component:MenuAdminComponent,canActivate:[CanActivateGuard]},
+  {path:'preguntas',component:PreguntasComponent},
+  {path:'reclamos',component:ReclamosComponent},
+  {path:'terminos',component:TerminosComponent},
   {path:'cliente',component:ClienteComponent,
+    
+
   children:[
     {path:'cliente-inicio',component:ClienteInicioComponent},
     {path:'cliente-pedidos',component:PedidosComponent},
@@ -113,6 +118,9 @@ import { InterceptorService } from './Components/Pasarela/interceptor.service';
 import { ValidarComponent } from './Components/Pasarela/validar/validar.component';
 import { PlantCorreoComponent } from './Components/plant-correo/plant-correo.component';
 import { VentasComponent } from './Components/Dashboard/ventas/ventas.component';
+import { PreguntasComponent } from './Components/preguntas/preguntas.component';
+import { ReclamosComponent } from './Components/reclamos/reclamos.component';
+import { TerminosComponent } from './Components/terminos/terminos.component';
 
 
 
@@ -165,6 +173,9 @@ import { VentasComponent } from './Components/Dashboard/ventas/ventas.component'
     ValidarComponent,
     PlantCorreoComponent,
     VentasComponent,
+    PreguntasComponent,
+    ReclamosComponent,
+    TerminosComponent,
     
 
   ],

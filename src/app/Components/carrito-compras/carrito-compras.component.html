@@ -5,84 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Carrito de compras</title>
-
-    <!-- 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
-
-    <style>
-        .titulo {
-            background-color: rgb(255 255 255 / 0%);
-            color: white
-        }
-
-        .listado {
-            color: white;
-            overflow-y: scroll;
-            max-width: 90%;
-            /*max-height: 35%;
-            /*min-height: 580px !important;*/
-        }
-
-        .boleta {
-            background: rgb(25 26 32 / 90%);
-            color: white;
-            /*max-height: 250px;*/
-        }
-
-        .fila-1 {
-            background-color: darkgray;
-            color: white;
-
-        }
-
-        .fila-0 {
-            background-color: gainsboro;
-        }
-
-        .cabecera-tabla {
-            background: rgb(25 26 32 / 90%);
-            color: white;
-        }
-
-        body {
-            
-
-        }
-
-        .headers {
-            position: unset !important;
-        }
-
-        html {
-            height: 100%;
-        }
-
-        .the {
-            border: 0px;
-        }
-        tr:nth-child(even) /* even = par || odd = impar */
-        {
-            background-color: white;
-        }
-
-        tr:nth-child(odd){
-            background-color: gainsboro;
-        }
-        td{
-        }
-        p{
-            text-align: center; 
-            width: 100%;
-            color: #cdcdcd;
-
-        }
-
-
-    </style>
-
+    <link rel="stylesheet" href="carrito-compras.component.css">
 </head>
 
 <body>
@@ -90,19 +15,14 @@
         <br>
         <div class="row titulo">
             <div class="col-md-12 text-center">
-                <h1><b>
-                    Carrito de Compras
-                </b> </h1>
+                <h1><i class="fa-solid fa-seedling"></i><b>  Carrito de Compras</b></h1>
             </div>
-
         </div>
         <br><br>
         <div class="row">
             <div class="col-9">
-                <div *ngIf="cont>0" class="row listado" style="display: flex;
-                justify-content: center;
-                align-items: center;">
-                    <table  class="table text-center" style="margin: 0px;">
+                <div *ngIf="cont>0" class="row listado" style="display: flex; justify-content: center; align-items: center;">
+                    <table class="table text-center" style="margin: 0px;">
                         <thead class="cabecera-tabla">
                             <th class="the"></th>
                             <th class="the">Producto</th>
@@ -110,40 +30,24 @@
                             <th class="the">Cantidad</th>
                             <th class="the">Subtotal</th>
                             <th colspan="2" class="the">Modificar</th>
-
                         </thead>
                         <tbody>
-                            <tr  *ngFor="let item of detalleVentas">
-                                <td style="padding: 0px 0px 0px 0px !important;"><img style="max-height: 70px; max-width: 70px;" src="{{item.producto.imagen}}" alt=""></td>
+                            <tr *ngFor="let item of detalleVentas">
+                                <td style="padding: 0;"><img style="max-height: 70px; max-width: 70px;" src="{{item.producto.imagen}}" alt=""></td>
                                 <td>{{item.producto.producto}}</td>
                                 <td>{{item.producto.precio}}</td>
                                 <td *ngIf="conf==true" id="cantidad">{{item.cantidad}}</td>
-                                <td *ngIf="conf==false"><input  [(ngModel)]="item.cantidad" id="cant_edit" class="form-control" type="number" > </td>
-                                <td>{{item.producto.precio*item.cantidad}}</td>
-
-                                <td colspan="0.5">
-                                    <button  (click)="procesar(item)" class="btn btn-success">{{valor}}</button>
-                                </td>
-
-                                <td>
-                                    <button (click)="eliminar(item.idDetalleVenta)" class="btn btn-danger">BORRAR</button>
-                                </td>
-                                
+                                <td *ngIf="conf==false"><input [(ngModel)]="item.cantidad" id="cant_edit" class="form-control" type="number"></td>
+                                <td>{{item.producto.precio * item.cantidad}}</td>
+                                <td><button (click)="procesar(item)" class="btn btn-success">{{valor}}</button></td>
+                                <td><button (click)="eliminar(item.idDetalleVenta)" class="btn btn-danger">BORRAR</button></td>
                             </tr>
                         </tbody>
                     </table>
-                    
-                    </div>
-                
+                </div>
 
-
-
-                <div *ngIf="cont==0" class="row listado" style="display: flex;
-                justify-content: center;
-                align-items: center;">
-                    
-                    
-                    <table  class="table text-center" style="margin: 0px;">
+                <div *ngIf="cont==0" class="row listado" style="display: flex; justify-content: center; align-items: center;">
+                    <table class="table text-center" style="margin: 0;">
                         <thead class="cabecera-tabla">
                             <th class="the"></th>
                             <th class="the">Producto</th>
@@ -151,57 +55,38 @@
                             <th class="the">Cantidad</th>
                             <th class="the">Subtotal</th>
                             <th colspan="2" class="the">Modificar</th>
-
                         </thead>
-                        <tbody>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                     <div class="count-products">
                         <span id="contador-productos">0</span>
                     </div>
-                    <img  style="height: 350px; width: 350px; max-width: 100%;
-                    max-height: 100%;" src="https://cdn-icons-png.flaticon.com/512/5435/5435052.png">
-
+                    <svg class="carrito-icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path d="M24 0C10.7 0 0 10.7 0 24S10.7 48 24 48l45.5 0c3.8 0 7.1 2.7 7.9 6.5l51.6 271c6.5 34 36.2 58.5 70.7 58.5L488 384c13.3 0 24-10.7 24-24s-10.7-24-24-24l-288.3 0c-11.5 0-21.4-8.2-23.6-19.5L170.7 288l288.5 0c32.6 0 61.1-21.8 69.5-53.3l41-152.3C576.6 57 557.4 32 531.1 32L360 32l0 102.1 23-23c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-64 64c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l23 23L312 32 120.1 32C111 12.8 91.6 0 69.5 0L24 0zM176 512a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm336-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0z"/>
+                    </svg>
+                    
                 </div>
-
-
-
-
-
-
-
-
             </div>
+
             <div class="col-3 boleta">
                 <br>
                 <div class="row">
-                    <h4 style="text-align: center;    width: 100%;"><b>Boleta</b></h4>
+                    <h4 class="titulo-resumen"><b>Resumen</b></h4>
                 </div>
-                <div class="row" >
-                    
-                    <p >IGV: {{cabecera.igv}}</p> 
-                    <br>
-                    <p>BRUTO: {{cabecera.bruto}}</p>
-                    <br>
-                    <p>NETO: {{cabecera.neto}}</p>
-                    <br>
-                    <div class="col-12 text-center">
-                        <button  (click)="irPasarela()" style="background: #ffa900; color:white;" class="btn">COMPRAR</button>
-
-                    </div>
-                    
+                <div class="row detalles-resumen">
+                    <p>Subtotal: {{cabecera.bruto}}</p>
+                    <p>IGV: {{cabecera.igv}}</p>
+                    <p>Total: {{cabecera.neto}}</p>
+                </div>
+                <div class="col-12 text-center">
+                    <button (click)="irPasarela()" class="btn btn-comprar">Continuar</button>
+                </div>
+                <div class="col-12 text-center">
+                    <a href="/index" class="back-link">Seguir comprando</a>
                 </div>
                 <br>
-
-
             </div>
-
         </div>
     </div>
-
-<script>
-
-</script>
 </body>
 </html>
-<!-- <app-footer></app-footer> -->

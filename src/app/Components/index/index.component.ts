@@ -35,7 +35,7 @@ export class IndexComponent implements OnInit {
   ObtenerInfo(producto:Producto):void{
     localStorage.setItem("codPro",producto.idProducto.toString());
     this.router.navigate(["productodetalle"]);
-    console.log(producto);
+    
   }
 
 }

@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
   roles: Rol[]=[];
   public loggedIn = false;
   public usuario:Usuario = new Usuario()
+  public rol:Rol = new Rol()
   public cabecera:CabeceraVenta = new CabeceraVenta()
 
   constructor(private router:Router,
@@ -37,13 +38,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.rolService.getRoles().subscribe(
-      roles=>{
-        for( let r of roles){
-          if((r.idRol==3)){
-            this.roles.push(r);
-          }
-        }
+    this.rolService.getRolesId(3).subscribe(
+      data=>{
+        this.rol=data;
       
       
       }
@@ -70,6 +67,8 @@ export class NavbarComponent implements OnInit {
   }
 
   Registrar(user:Usuario){
+    user.estado=1;
+    user.rol=this.rol;
 
     this.loginService.createUser(user)
     .subscribe(data=>{

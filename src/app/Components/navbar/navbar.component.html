@@ -42,12 +42,7 @@
                 <li><a href="#">Más</a></li>
               </ul>
     
-              <form class="search-form">
-                <input type="search" placeholder="Buscar..." />
-                <button class="btn-search">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </form>
+              
             </nav>
           </div>
         </header>
@@ -139,20 +134,7 @@
           
         </div>
 
-          <div class="mb-1">
-              <label for="" class="form-label fw-bolder">Estado</label><br>
-              <select name="estado"  [(ngModel)]="usuario.estado" class="form-control ps-2" aria-label="Default select example">
-                  <option [ngValue]="undefined" selected>--Seleccione--</option>
-                  <option [ngValue]="1">Activo</option>
-              </select>
-          </div>
-          <div class="mb-1">
-            <label for="" class="form-label fw-bolder">Rol</label><br>
-            <select name="estado"  [(ngModel)]="usuario.rol" class="form-control ps-2" aria-label="Default select example">
-                <option [ngValue]="undefined" selected>--Seleccione--</option>
-                <option *ngFor="let rol of roles"  [ngValue]="rol">{{rol.rol}}</option>
-            </select>
-        </div>
+          
           
           
           
